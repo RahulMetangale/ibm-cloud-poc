@@ -4,6 +4,7 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+deployment.tfplan
 
 # Crash log files
 crash.log
