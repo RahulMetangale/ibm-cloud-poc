@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-ibm-deployment
+  namespace: system
+  labels:
+    app: hello-ibm
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: hello-ibm
+  template:
+    metadata:
+      labels:
+        app: hello-ibm
+    spec:
+      imagePullSecrets:
+       - name: all-icr-io
+      containers:
+      - name: hello-ibm
+        image: icr.io/poccontainerregistry/hello-ibm-cloud
+        ports:
+        - containerPort: 3000

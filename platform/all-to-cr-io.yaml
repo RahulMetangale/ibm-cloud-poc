@@ -1,0 +1,9 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: all-icr-io
+  namespace: system
+data:
+  .dockerconfigjson: "${CR_AUTH_TOKEN}"
+type: kubernetes.io/dockerconfigjson
+
